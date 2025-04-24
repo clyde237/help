@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="action_helpdesk_ticket" model="ir.actions.act_window">
+            <field name="name">Tickets</field>
+            <field name="res_model">helpdesk.ticket</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez votre premier ticket d'assistance
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Principal -->
+        <menuitem id="menu_helpdesk_root" name="Assistance" sequence="10" web_icon="helpdesk_ticket,static/description/icon.png"/>
+
+        <!-- Sous-menu -->
+        <menuitem id="menu_helpdesk_tickets" name="Tickets" parent="menu_helpdesk_root" sequence="10"/>
+
+
+        <menuitem id="menu_helpdesk_ticket_items"
+                  name="Tous les Tickets"
+                  parent="menu_helpdesk_tickets"
+                  action="action_helpdesk_ticket"
+                  sequence="1"/>
+    </data>
+</odoo>
+
+<!--<odoo>-->
+<!--    <data>-->
+<!--        <record id="action_helpdesk_ticket" model="ir.actions.act_window">-->
+<!--            <field name="name">Tickets</field>-->
+<!--            <field name="res_model">helpdesk.ticket</field>-->
+<!--            <field name="view_mode">tree,form,kanban</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent_smiling_face">-->
+<!--                    Créez votre premier ticket d'assistance-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
+<!--        &lt;!&ndash;        menu hr_team_manager&ndash;&gt;-->
+<!--        <menuitem id="menu_helpdesk_root" name="ASSISTANCE" sequence="10" icon="fa-life-ring"/>-->
+<!--        <menuitem id="menu_helpdesk_tickets" name="Tickets" parent="menu_helpdesk_root" sequence="10"/>-->
+<!--        <menuitem id="menu_helpdesk_ticket_items"-->
+<!--                  name="Tous les Tickets"-->
+<!--                  parent="menu_helpdesk_tickets"-->
+<!--                  action="action_helpdesk_ticket"-->
+<!--                  sequence="1"/>-->
+<!--    </data>-->
+<!--</odoo>-->

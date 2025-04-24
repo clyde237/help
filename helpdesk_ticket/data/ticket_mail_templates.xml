@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="ticket_mail_created" model="mail.template">
+        <field name="name">Ticket - Création</field>
+        <field name="email_from">${(user.email_formatted or 'noreply@example.com')|safe}</field>
+        <field name="subject">[Ticket #${object.name}] Confirmation de réception</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="email_to">${object.partner_id.email}</field>
+        <field name="body_html"><![CDATA[
+            <p>Bonjour ${object.partner_id.name},</p>
+            <p>Nous avons bien reçu votre demande concernant : <strong>${object.subject}</strong>.</p>
+            <p>Un membre de notre équipe vous répondra sous peu.</p>
+            <p>Merci,<br/>L’équipe support</p>
+        ]]></field>
+    </record>
+
+    <record id="ticket_mail_started" model="mail.template">
+        <field name="name">Ticket - En cours</field>
+        <field name="email_from">${(user.email_formatted or 'noreply@example.com')|safe}</field>
+        <field name="subject">[Ticket #${object.name}] En cours de traitement</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="email_to">${object.user_id.email}</field>
+        <field name="body_html"><![CDATA[
+            <p>Bonjour ${object.user_id.name},</p>
+            <p>Un ticket vous a été assigné : <strong>${object.subject}</strong>.</p>
+            <p>Merci de le traiter dès que possible.</p>
+        ]]></field>
+    </record>
+
+    <record id="ticket_mail_resolved" model="mail.template">
+        <field name="name">Ticket - Résolu</field>
+        <field name="email_from">${(user.email_formatted or 'noreply@example.com')|safe}</field>
+        <field name="subject">[Ticket #${object.name}] Votre demande est résolue</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="email_to">${object.partner_id.email}</field>
+        <field name="body_html"><![CDATA[
+            <p>Bonjour ${object.partner_id.name},</p>
+            <p>Nous avons marqué votre ticket comme <strong>résolu</strong>.</p>
+            <p>Merci de votre confiance.</p>
+        ]]></field>
+    </record>
+
+    <record id="ticket_mail_closed" model="mail.template">
+        <field name="name">Ticket - Clôturé</field>
+        <field name="email_from">${(user.email_formatted or 'noreply@example.com')|safe}</field>
+        <field name="subject">[Ticket #${object.name}] Clôture du ticket</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="email_to">${object.partner_id.email}</field>
+        <field name="body_html"><![CDATA[
+            <p>Bonjour ${object.partner_id.name},</p>
+            <p>Votre ticket a été clôturé. N’hésitez pas à nous recontacter si besoin.</p>
+            <p>Support technique</p>
+        ]]></field>
+    </record>
+
+<!--    modele de mail pour notifier les mails non resolu depuis 7 jours-->
+    <record id="ticket_mail_unresolved" model="mail.template">
+        <field name="name">Ticket - non resolu depuis 7 jours</field>
+        <field name="email_from">${(user.email_formatted or 'noreply@example.com')|safe}</field>
+        <field name="subject">[Ticket #${object.name}] Votre demande est toujours en cours</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="email_to">${object.partner_id.email}</field>
+        <field name="body_html"><![CDATA[
+            <p>Bonjour ${object.partner_id.name},</p>
+            <p>Nous tenons à vous informer que votre ticket est toujours en cours de traitement.</p>
+            <p>Merci de votre patience.</p>
+            <p>Support technique</p>
+        ]]></field>
+    </record>
+</odoo>

@@ -1,0 +1,78 @@
+<!--<odoo>-->
+<!--    <template id="report_ticket_status">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-call="web.external_layout">-->
+<!--                <t t-foreach="docs" t-as="ticket">-->
+<!--                    <div class="page">-->
+<!--                        <h2>Rapport du Ticket :-->
+<!--                            <t t-esc="ticket.name"/>-->
+<!--                        </h2>-->
+<!--                        <p>-->
+<!--                            <strong>Sujet :</strong>-->
+<!--                            <t t-esc="ticket.subject"/>-->
+<!--                        </p>-->
+<!--                        <p>-->
+<!--                            <strong>Client :</strong>-->
+<!--                            <t t-esc="ticket.partner_id.name or 'N/A'"/>-->
+<!--                        </p>-->
+<!--                        <p>-->
+<!--                            <strong>Assigné à :</strong>-->
+<!--                            <t t-esc="ticket.user_id.name or 'N/A'"/>-->
+<!--                        </p>-->
+<!--                        <p>-->
+<!--                            <strong>État :</strong>-->
+<!--                            <t t-esc="ticket.state"/>-->
+<!--                        </p>-->
+<!--                        <p>-->
+<!--                            <strong>Description :</strong>-->
+<!--                        </p>-->
+<!--                        <p>-->
+<!--                            <t t-esc="ticket.description or 'N/A'"/>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+<!--avec tableau-->
+
+<odoo>
+    <template id="report_ticket_status">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="ticket">
+                    <div class="page">
+                        <h2 style="text-align: center; margin-bottom: 20px;">Rapport du Ticket : <t t-esc="ticket.name"/></h2>
+
+                        <table class="table table-sm table-bordered" style="width: 100%; border-collapse: collapse;" border="1">
+                            <tbody>
+                                <tr>
+                                    <th style="padding: 8px;">Sujet</th>
+                                    <td style="padding: 8px;"><t t-esc="ticket.subject or 'N/A'"/></td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px;">Client</th>
+                                    <td style="padding: 8px;"><t t-esc="ticket.partner_id.name or 'N/A'"/></td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px;">Assigné à</th>
+                                    <td style="padding: 8px;"><t t-esc="ticket.user_id.name or 'N/A'"/></td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px;">État</th>
+                                    <td style="padding: 8px;"><t t-esc="ticket.state or 'N/A'"/></td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 8px;">Description</th>
+                                    <td style="padding: 8px;"><t t-esc="ticket.description or 'N/A'"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
